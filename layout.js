@@ -1,33 +1,15 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; // reemplaza styles.css
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "NEXUS TECH — Proyectos · Marketing Digital · IA",
   description:
     "Empresa líder en tecnología, marketing digital e inteligencia artificial. Transformamos ideas en soluciones digitales de alto impacto.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-
+    <html lang="es">
+      <body>
         {/* ── PRELOADER ── */}
         <div id="preloader">
           <div className="preloader-logo">NEXUS TECH</div>
@@ -52,6 +34,8 @@ export default function RootLayout({
             <div className="logo-icon">⚡</div>
             NEXUS TECH
           </a>
+
+          {/* El hamburger necesita interactividad → extraer a un Client Component si se requiere */}
           <button
             className="hamburger"
             id="hamburger"
@@ -62,6 +46,7 @@ export default function RootLayout({
             <span></span>
             <span></span>
           </button>
+
           <nav className="nav-menu" id="nav-menu" role="navigation">
             <a href="#hero">Inicio</a>
             <a href="#services">Servicios</a>
@@ -78,6 +63,7 @@ export default function RootLayout({
         <footer id="footer">
           <div className="container">
             <div className="footer-grid">
+              {/* Marca */}
               <div className="footer-brand">
                 <div className="logo" style={{ marginBottom: "20px" }}>
                   <div className="logo-icon">⚡</div>
@@ -88,13 +74,22 @@ export default function RootLayout({
                   artificial. Transformamos ideas en soluciones de alto impacto.
                 </p>
                 <div className="social-links">
-                  <a href="#" className="social-link" aria-label="LinkedIn">in</a>
-                  <a href="#" className="social-link" aria-label="Twitter">𝕏</a>
-                  <a href="#" className="social-link" aria-label="Instagram">ig</a>
-                  <a href="#" className="social-link" aria-label="YouTube">▶</a>
+                  <a href="#" className="social-link" aria-label="LinkedIn">
+                    in
+                  </a>
+                  <a href="#" className="social-link" aria-label="Twitter">
+                    𝕏
+                  </a>
+                  <a href="#" className="social-link" aria-label="Instagram">
+                    ig
+                  </a>
+                  <a href="#" className="social-link" aria-label="YouTube">
+                    ▶
+                  </a>
                 </div>
               </div>
 
+              {/* Enlaces rápidos */}
               <div className="footer-col">
                 <h4>Enlaces Rápidos</h4>
                 <div className="footer-links">
@@ -106,17 +101,19 @@ export default function RootLayout({
                 </div>
               </div>
 
+              {/* Servicios */}
               <div className="footer-col">
                 <h4>Servicios</h4>
                 <div className="footer-links">
-                  <a href="/diseno-web.html">Diseño Web</a>
-                  <a href="/desarrollo-software.html">Software</a>
-                  <a href="/marketing-digital.html">Marketing Digital</a>
-                  <a href="/servicios-ia.html">Servicios IA</a>
-                  <a href="/negocios.html">Negocios</a>
+                  <a href="/diseno-web">Diseño Web</a>
+                  <a href="/desarrollo-software">Software</a>
+                  <a href="/marketing-digital">Marketing Digital</a>
+                  <a href="/servicios-ia">Servicios IA</a>
+                  <a href="/negocios">Negocios</a>
                 </div>
               </div>
 
+              {/* Newsletter */}
               <div className="newsletter">
                 <h4>Newsletter</h4>
                 <p>Recibe las últimas novedades en tecnología e IA.</p>
@@ -127,6 +124,7 @@ export default function RootLayout({
                     placeholder="tucorreo@email.com"
                     aria-label="Email para newsletter"
                   />
+                  {/* onClick requiere un Client Component — ver nota abajo */}
                   <button className="newsletter-btn">→</button>
                 </div>
               </div>
@@ -147,7 +145,6 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
-
       </body>
     </html>
   );
