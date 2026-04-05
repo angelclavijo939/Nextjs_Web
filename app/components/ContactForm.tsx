@@ -68,20 +68,25 @@ export default function ContactForm() {
     }
   }
 
-  if (sent) {
-    return (
-      <div style={{
-        display: "block",
-        textAlign: "center",
-        padding: "20px",
-        color: "#00f5ff",
-        fontSize: "1.1rem",
-        fontWeight: "600"
-      }}>
-        ✅ ¡Mensaje enviado con éxito! Te contactaremos pronto.
-      </div>
-    );
-  }
+ if (sent) {
+  setTimeout(() => {
+    window.location.href = "/";
+  }, 3000);
+  
+  return (
+    <div style={{
+      display: "block",
+      textAlign: "center",
+      padding: "20px",
+      color: "#00f5ff",
+      fontSize: "1.1rem",
+      fontWeight: "600"
+    }}>
+      ✅ ¡Mensaje enviado con éxito! Te contactaremos pronto.<br/>
+      <span style={{ fontSize: "0.85rem", color: "#8baac5" }}>Redirigiendo en 3 segundos...</span>
+    </div>
+  );
+}
 
   return (
     <div className="contact-form reveal reveal-delay-2">
