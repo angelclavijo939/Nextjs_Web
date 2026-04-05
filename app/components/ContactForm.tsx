@@ -97,7 +97,7 @@ export default function ContactForm() {
             type="text" id="nombres" name="nombres"
             placeholder="TU NOMBRE" autoComplete="given-name"
             value={fields.nombres}
-            onChange={(e) => setFields({ ...fields, nombres: e.target.value })}
+            onChange={(e) => setFields({ ...fields, nombres: e.target.value.toUpperCase() })}
           />
           {errors.nombres && <div className="form-msg">{errors.nombres}</div>}
         </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
             type="text" id="apellidos" name="apellidos"
             placeholder="TUS APELLIDOS" autoComplete="family-name"
             value={fields.apellidos}
-            onChange={(e) => setFields({ ...fields, apellidos: e.target.value })}
+            onChange={(e) => setFields({ ...fields, apellidos: e.target.value.toUpperCase() })}
           />
           {errors.apellidos && <div className="form-msg">{errors.apellidos}</div>}
         </div>
