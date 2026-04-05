@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
     // Crear tabla si no existe
     await sql`
-      CREATE TABLE IF NOT EXISTS contactos (
+      CREATE TABLE IF NOT EXISTS clientes_web (
         id SERIAL PRIMARY KEY,
         nombres VARCHAR(100) NOT NULL,
         apellidos VARCHAR(100) NOT NULL,
@@ -26,13 +26,13 @@ export async function POST(req: NextRequest) {
 
     // Insertar contacto
     await sql`
-      INSERT INTO contactos (nombres, apellidos, correo, telefono, mensaje)
+      INSERT INTO clientes_web (nombres, apellidos, correo, telefono, mensaje)
       VALUES (${nombres}, ${apellidos}, ${correo}, ${telefono}, ${mensaje})
     `;
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error guardando contacto:", error);
+    console.error("Error guardando clientes_web:", error);
     return NextResponse.json({ error: "Error al guardar el mensaje." }, { status: 500 });
   }
 }
