@@ -1,4 +1,4 @@
-cat > app/page.tsx << 'ENDOFFILE'
+"use client";
 "use client";
 
 import { useState } from "react";
